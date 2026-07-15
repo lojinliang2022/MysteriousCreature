@@ -15,11 +15,13 @@ MAX 个人品牌站的静态导出版本。中英双语单页站点,深色主题
 │   └── webfonts/
 │       ├── fa-brands-400.woff2
 │       └── fa-solid-900.woff2
-└── images/             # 首屏足球滚动帧(4 张)
-    ├── football-field.jpg
+└── images/
+    ├── football-field.jpg   # 首屏滚动帧 ×4
     ├── football-30.jpg
     ├── football-60.jpg
-    └── football-90.jpg
+    ├── football-90.jpg
+    ├── wechat-qr.jpg        # 联系区二维码
+    └── wechat-profile.jpg   # 微信按钮弹层名片图
 ```
 
 没有构建步骤,没有依赖安装,没有打包产物。`index.html` 就是最终交付物,改完直接生效。
@@ -58,6 +60,12 @@ Hero 区叠了 4 张足球场照片,监听 `window.scrollY`,在首屏 85% 高度
 
 改动这段动画时注意:4 张图的 id 是 `heroF0`–`heroF3`,顺序写死在 JS 的 `frames` 数组里,增删图片要同步改数组和 HTML。
 
+## 联系区微信弹层
+
+联系区三个圆形按钮里,Instagram 和 TikTok 是普通外链,微信那个是 `<button id="wechatBtn">`:点击把 `#wechatModal` 的 `display` 切成 `flex`,全屏遮罩上展示 `images/wechat-profile.jpg`;点遮罩任意位置关闭。
+
+弹层默认 `display:none` 写在行内样式上,JS 直接改 `style.display`,没有额外的类名或状态管理。
+
 ## 设计规范
 
 | 项 | 值 |
@@ -80,16 +88,17 @@ Hero 区叠了 4 张足球场照片,监听 `window.scrollY`,在首屏 85% 高度
 
 Font Awesome 已经本地托管在 `fa/`,不走 CDN。
 
+需要注意的是,`fa/css/fontawesome-all.min.css` 里声明了 Brands、Regular、Solid 三套 `@font-face`,每套都列了 eot / woff2 / woff / ttf / svg 五种格式,但 `fa/webfonts/` 实际只放了 `fa-brands-400.woff2` 和 `fa-solid-900.woff2`。现在页面只用 `fab` 品牌图标(Instagram / TikTok / WeChat / YouTube),brands 的 woff2 在,现代浏览器会跳过它不支持的格式直接取 woff2,所以不会有 404。但如果之后用到 `far` 系列图标,得先把 `fa-regular-400.woff2` 补进 `fa/webfonts/`。
+
 ## 待补占位图
 
-页面里有 4 处虚线框占位符(`class="ph"`),目前显示的是提示文字而不是图片。补图时把对应的 `<div class="ph">` 换成 `<img>` 即可:
+页面里还有 3 处虚线框占位符(`class="ph"`),目前显示的是提示文字而不是图片。补图时把对应的 `<div class="ph">` 换成 `<img>` 即可:
 
 | 位置 | 待补文件 | 用途 |
 | --- | --- | --- |
-| `index.html:187` | `images/breather.jpg` | 训练格言通栏大图 |
-| `index.html:229` | `images/service-trade.jpg` | 商务接待配图 |
-| `index.html:274` | `images/ev-nio.jpg` | NIO 换电测评视频封面 |
-| `index.html:314` | `images/wechat-qr.jpg` | 微信二维码(120×120) |
+| `index.html:188` | `images/breather.jpg` | 训练格言通栏大图 |
+| `index.html:230` | `images/service-trade.jpg` | 商务接待配图 |
+| `index.html:275` | `images/ev-nio.jpg` | NIO 换电测评视频封面 |
 
 ## 部署
 

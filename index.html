@@ -21,6 +21,7 @@ a:hover{color:#CFFF04}
 .hoverBorderGreen:hover{border-color:#CFFF04;color:#CFFF04}
 .hoverZoom:hover{transform:scale(1.06);filter:none}
 .hoverZoom2:hover{transform:scale(1.05)}
+.socialBtn:hover{transform:scale(1.08);box-shadow:0 0 24px rgba(207,255,4,0.45)}
 .svcPhoto:hover{transform:scale(1.06)}
 .svcCard:hover{border-color:#CFFF04}
 .evCard:hover{border-color:#CFFF04}
@@ -304,14 +305,14 @@ figure[data-cat].hidden{display:none}
     <p style="margin:14px 0 0;font-family:'Noto Sans SC',sans-serif;font-weight:300;font-size:13px;letter-spacing:0.24em;color:#8d8d86">合作洽谈 · 欢迎来信</p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:36px">
       <a href="mailto:BigMax2026@gmail.com" class="hoverWhiteBg" style="background:#CFFF04;color:#0e0e0e;padding:16px 30px;font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;transition:background 0.25s">BigMax2026@gmail.com</a>
-      <div style="display:flex;gap:10px">
-        <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="hoverBorderGreen" style="width:50px;height:50px;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;color:#a9a9a2;transition:border-color 0.25s,color 0.25s"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com" target="_blank" rel="noopener" aria-label="TikTok" class="hoverBorderGreen" style="width:50px;height:50px;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:17px;color:#a9a9a2;transition:border-color 0.25s,color 0.25s"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.twitter.com" target="_blank" rel="noopener" aria-label="X / Twitter" class="hoverBorderGreen" style="width:50px;height:50px;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;color:#a9a9a2;transition:border-color 0.25s,color 0.25s"><i class="fab fa-twitter"></i></a>
+      <div style="display:flex;gap:12px">
+        <a href="https://www.instagram.com/dunk_eb/" target="_blank" rel="noopener" aria-label="Instagram" class="socialBtn" style="width:60px;height:60px;background:#CFFF04;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;color:#0e0e0e;transition:transform 0.2s,box-shadow 0.2s"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener" aria-label="TikTok" class="socialBtn" style="width:60px;height:60px;background:#CFFF04;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:#0e0e0e;transition:transform 0.2s,box-shadow 0.2s"><i class="fab fa-tiktok"></i></a>
+        <button id="wechatBtn" aria-label="WeChat: dunk_sht" class="socialBtn" style="cursor:pointer;border:none;width:60px;height:60px;background:#CFFF04;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:#0e0e0e;transition:transform 0.2s,box-shadow 0.2s"><i class="fab fa-weixin"></i></button>
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:18px;margin-top:36px">
-      <div class="ph" style="width:120px;height:120px;flex:none">二维码<br>WeChat QR<br>add images/wechat-qr.jpg</div>
+      <img src="images/wechat-qr.jpg" alt="WeChat QR — scan to add dunk_sht" style="width:120px;height:120px;object-fit:cover;border-radius:6px;flex:none">
       <div>
         <p style="margin:0;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase">WeChat: <span style="color:#CFFF04">dunk_sht</span></p>
         <p style="margin:6px 0 0;font-size:12px;color:#8d8d86;font-family:'Noto Sans SC',sans-serif;font-weight:300">微信号 dunk_sht · 扫码添加微信 · Scan to add me on WeChat</p>
@@ -323,6 +324,9 @@ figure[data-cat].hidden{display:none}
     <p style="margin:0;font-size:12px;color:#6f6f68;font-family:'Noto Sans SC',sans-serif;font-weight:300">广州 · 佛山 — Guangzhou · Foshan, China</p>
   </div>
 </footer>
+<div id="wechatModal" style="display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.75);align-items:center;justify-content:center;padding:24px;cursor:zoom-out">
+  <img src="images/wechat-profile.jpg" alt="WeChat profile — dunk_sht" style="max-width:min(90vw,380px);max-height:85vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5)">
+</div>
 
 <script>
 (function(){
@@ -363,6 +367,11 @@ figure[data-cat].hidden{display:none}
       });
     });
   });
+  var wechatBtn=document.getElementById('wechatBtn'), wechatModal=document.getElementById('wechatModal');
+  if(wechatBtn && wechatModal){
+    wechatBtn.addEventListener('click', function(){ wechatModal.style.display='flex'; });
+    wechatModal.addEventListener('click', function(){ wechatModal.style.display='none'; });
+  }
 })();
 </script>
 </body>
